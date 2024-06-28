@@ -1,0 +1,153 @@
+{% extends 'nav.html' %}
+{%block robot%}{{seo.index}}{%endblock%}, {%block index%}{{seo.follow}}{%endblock%}
+{%block googlebot%}{{seo.index}}{%endblock%}, {%block gfollow%}{{seo.follow}}{%endblock%}
+{%block bingbot%}{{seo.index}}{%endblock%}, {%block bfollow%}{{seo.follow}}{%endblock%}
+{% block metatitle %}{{seo.page_title}}{% endblock %}
+{% block metadescription %}{{seo.meta}}{% endblock %}
+{% block url %}{{request.build_absolute_uri}}{% endblock %}
+{% block canonical %}{{request.build_absolute_uri}}{% endblock %}
+{% block title %}{{seo.page_title}}{% endblock %}
+{% block content %}
+{% load static %}
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "WebSite",
+      "name": "The Uganda Blog",
+      "url": "https://ethiopiablog.com",
+      "description": "About Ethiopia",
+      "potentialAction": {
+        "@type": "webpage",
+        "target": "About Ethiopia",
+        "query-input": "Ethiopia"
+      }
+    }
+    </script>
+<div class="home">
+<main>
+    <div class="Bannerheading">
+        <h1><span class="brand" data-aos="fade-up">Ethiopia:</span><br><span data-aos="fade-up"
+                data-aos-delay="1000">Where History Lives</span></h1>
+    </div>
+    <a href="" id="tour">Book Tour</a>
+</main>
+
+<section class="about-Ethiopia" data-aos="fade-up" data-aos-duration="800">
+    <div>
+        <!-- <h6 class="heading">About Ethiopia</h6> -->
+         <h2>What Makes Ethiopia Special</h2>
+        <p>Welcome to Ethiopia, a land rich in history, culture, and natural beauty. From the ancient rock-hewn churches of Lalibela to the majestic castles of Gondar, the country's historical sites are a testament to its rich past.</p>
+        <ul>
+            <li><img src="{% static 'images/bean.png'%}" alt="">&nbsp; The birthplace of coffee, boasts a rich cultural heritage and ancient history.</li>
+            <li><img src="{% static 'images/bean.png'%}" alt="">&nbsp; The country's diverse landscapes include the Simien Mountains and the Danakil Depression.</li>
+            <li><img src="{% static 'images/bean.png'%}" alt="">&nbsp; the famous Lucy skeleton highlights Ethiopia as a key site in human evolution.</li>
+            <li><img src="{% static 'images/bean.png'%}" alt="">&nbsp; Known for its ancient rock-hewn churches in Lalibela and castles in Gondar.</li>
+ 
+
+        </ul>
+    </div>
+    <div class="two-image" data-aos="fade-left" data-aos-duration="1000">
+        <img src="{% static 'images/denkil.jpg'%}" alt="" width="50%" height="70%">
+                           <img  src="{% static 'images/gondar.jpg'%}" alt="" width="50%" height="70%">
+
+    </div>
+    
+</section>
+
+<section data-aos="fade-up">
+    <h5 class="statement-two" data-aos="fade-left" data-aos-delay="800" data-aos-duration="1000">Timeless
+        Wonders,<br><span class="brand">Endless Discoveries</span></h5>
+    <div class="dgr-2 container">
+        <div class="info" data-aos="fade-right" data-aos-duration="1000">
+            <img class="bgimg" src="{% static 'images/coffee.jpg'%}" alt="">
+            <div class="detail">
+                <h3>01</h3>
+                <img class="arrow" src="{% static 'images/down.png'%}" alt="" width="32px">
+                <h4>Coffee was discovered in Ethiopia.</h4>
+                <p>Coffee was first discovered in Ethiopia, where its cultivation and consumption have deep historical roots. Ethiopia is well-known for its traditional coffee culture and diverse coffee flavors. </p>
+                <p><span class="tag">ethiopia</span><span class="tag">cofee</span></p>
+
+            </div>
+        </div>
+        <div class="info" data-aos="fade-left" data-aos-duration="1000">
+            <img class="bgimg" src="{% static 'images/terrain.jpg'%}" alt="" height="100%">
+            <div class="detail">
+                <h3>02</h3>
+                <img class="arrow" src="{% static 'images/down.png'%}" alt="" width="32px">
+                <h4>More than half of Africa's mountains are located in Ethiopia.</h4>
+                <p>Ethiopia's diverse landscape includes low deserts and volcanic plateaus, and it hosts about 50% - 60% of Africa's mountains, highlighting its cultural and historical significance. </p>
+                <p><span class="tag">ethiopia</span><span class="tag">cofee</span></p>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="video">
+    <h2>Ethiopia's Lalibela is famous for its rock-hewn churches, carved from the mountains in the 12th century, showcasing incredible ancient craftsmanship.</h2>
+</section>
+
+<section class="recentblog dgr-3">
+    
+    {% for blog in category %}
+    <a href="{% url 'blogcategory' blog.slug %}">
+    <div class="post" {% if forloop.counter == 1 or forloop.counter == 4 %} data-aos="fade-left" {% elif forloop.counter == 2 or forloop.counter == 5 %} data-aos="fade-up" {% elif forloop.counter == 3 or forloop.counter == 6 %} data-aos="fade-right" {% endif %} data-aos-duration="1000" data-aos-delay="500">
+        <div>
+            <h5>0{{forloop.counter}}</h5>
+            <h4 class="mb-2">{{blog.name}}</h4>
+            <p>{{blog.description}}</p>
+        </div>
+        <img src="{{blog.image.url}}" alt="">
+    </div>
+</a>
+    {% endfor %}
+
+</section>
+
+<!-- <section class="column2" data-aos="fade-up">
+    <div class="dgr-2 container">
+        <div data-aos="fade-right"  data-aos-duration="1000">
+            <h2 class="mb-2">Wellcome to Ethiopia</h2>
+            <p class="mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempus vestib ulum mauris
+                quis aliquam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempus vestibulum mauris
+                quis aliquam. Integer accumsan sodales odio, id tempus velit ullamcorper id. Quisque at erat eu libero
+                consequat tempus. Quisque molestie convallis tempus. Ut semper purus metus, a euismod sapien sodales ac.
+                Duis viverra eleifend fermentum.</p>
+            <button>Read More</button>
+        </div>
+        <div class="two-image" data-aos="fade-left" data-aos-duration="1000">
+            <img src="{% static 'images/denkil.jpg'%}" alt="" width="50%" height="70%">
+                               <img  src="{% static 'images/school.jpg'%}" alt="" width="50%" height="70%">
+
+        </div>
+    </div>
+</section> -->
+<section class="stats">
+    <h6 class="heading1">It's Ethiopia</h6>
+    <div class="d-flex">
+        <div class="stat" data-aos="fade-right" data-aos-delay="300" data-aos-duration="800">
+            <img src="{% static 'images/dollar.png'%}" alt="" height="30px">
+            <h3>3.1 B</h3>
+            <p>Second Highest GDP</p>
+        </div>
+        <div class="stat" data-aos="fade-right" data-aos-duration="800">
+            <img src="{% static 'images/dollar.png'%}" alt="" height="30px">
+            <h3>3.1 B</h3>
+            <p>Second Highest GDP</p>
+        </div>
+        <div class="stat" data-aos="fade-left" data-aos-duration="800">
+            <img src="{% static 'images/dollar.png'%}" alt="" height="30px">
+            <h3>3.1 B</h3>
+            <p>Second Highest GDP</p>
+        </div>
+        <div class="stat" data-aos="fade-left" data-aos-delay="300" data-aos-duration="800">
+            <img src="{% static 'images/dollar.png'%}" alt="" height="30px">
+            <h3>3.1 B</h3>
+            <p>Second Highest GDP</p>
+        </div>
+    </div>
+</section>
+</div>
+
+
+{% endblock content %}

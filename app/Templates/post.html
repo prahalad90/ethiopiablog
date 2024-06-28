@@ -1,0 +1,34 @@
+{% extends 'nav.html' %}
+{% load static %}
+{% block content %}
+    <section class="banner">
+        <img class="bg-img" src="{{post.bannerImage.url}}" alt="{{post.altTag}}">
+        <div class="bannerhead">
+        <h1>{{post.title}}</h1>
+    </div>
+    </section>
+    <section class="twosection">
+        <div class="left" >
+            {{post.content |safe}}
+            
+        </div>
+        <div class="right">
+            <h5 class="mb-2">Related Post</h5>
+            <ul class="mb-2">
+                
+                {% for j in allpost  %}
+                <li><a href="{% url 'post' j.category.slug j.slug%}">{{j.title}}</a></li>    
+                {% endfor %}
+                
+            </ul>
+            <h5 class="mb-2">Category</h5>
+            <ul>
+                {% for cat  in allcat %}
+                <li><a href="{% url 'blogcategory' cat.slug%}">{{cat.name}}</a></li>    
+                {% endfor %}
+            </ul>
+        </div>
+        
+    </section>
+{% endblock content %}
+    

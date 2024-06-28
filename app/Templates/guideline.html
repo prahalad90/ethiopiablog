@@ -1,0 +1,26 @@
+{% extends 'nav.html' %}
+{% load static %}
+{% block content %}
+<section class="banner">
+    <img class="bg-img" src="{{guideline.bannerImage.url}}" alt="{{guideline.altTag}}">
+    <div class="bannerhead">
+        <h1>{{guideline.name}}</h1>
+    </div>
+</section>
+<section class="twosection">
+    <div class="left">
+        <h2>{{guideline.heading}}</h2>
+        {{guideline.content |safe}}
+    </div>
+    <div class="right">
+        <h5 class="mb-2">Guidelines</h5>
+        <ul>
+            
+            {% for j in guidelines%}
+            <li><a href="{% url 'guideline' j.slug %}">{{j.name}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</section>
+{% endblock content %}

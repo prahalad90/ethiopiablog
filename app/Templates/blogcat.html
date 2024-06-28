@@ -1,0 +1,49 @@
+{% extends 'nav.html' %}
+{%block robot%}{{seo.index}}{%endblock%}, {%block index%}{{seo.follow}}{%endblock%}
+{%block googlebot%}{{seo.index}}{%endblock%}, {%block gfollow%}{{seo.follow}}{%endblock%}
+{%block bingbot%}{{seo.index}}{%endblock%}, {%block bfollow%}{{seo.follow}}{%endblock%}
+{% block metatitle %}{{seo.page_title}}{% endblock %}
+{% block metadescription %}{{seo.meta}}{% endblock %}
+{% block url %}{{request.build_absolute_uri}}{% endblock %}
+{% block canonical %}{{request.build_absolute_uri}}{% endblock %}
+{% block title %}{{seo.page_title}}{% endblock %}
+
+{% load static %}
+{% block content %}
+<div class="banner">
+    <img class="bg-img" src="{{category.image.url}}" alt="">
+    <div class="bannerhead">
+        <h1>{{category.name}}</h1>
+    </div>
+</div>
+
+<section class="twosection">
+    <div class="left">
+        <div class="dgr-3">
+            {% for i in posts %}
+            <a href="{% url 'post' i.category.slug i.slug %}">
+            <div class="post1" {% if forloop.counter == 1 or forloop.counter == 4 %} data-aos="fade-left" {% elif forloop.counter == 2 or forloop.counter == 5 %} data-aos="fade-up" {% elif forloop.counter == 3 or forloop.counter == 6 %} data-aos="fade-right" {% endif %} data-aos-duration="1000" data-aos-delay="500">
+                <div>
+                    <h5>0{{forloop.counter}}</h5>
+                    <h5>{{i.title}}</h5>
+                </div>
+                <img src="{{i.bannerImage.url}}" alt="">
+            </div>
+        </a>
+            {% endfor %}
+             
+        </div>
+    </div>
+    <div class="right">
+        <h5 class="mb-2">Category</h5>
+        <ul>
+            {% for cat  in allcat %}
+            <li><a href="{% url 'blogcategory' cat.slug%}">{{cat.name}}</a></li>    
+            {% endfor %}
+        </ul>
+    </div>
+    
+</section>
+    
+
+{% endblock content %}

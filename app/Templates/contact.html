@@ -1,0 +1,27 @@
+{% extends 'nav.html' %}
+{% load static %}
+{% block content %}
+    <div class="contactbanner">
+        <div>
+            <h2 class="mb-2">Get in touch with Us</h2>
+            <p class="mb-2">Contact us today to start exploring Ethiopia's wonders. We look forward to hearing from you!</p>
+                <div class="contact1">
+                    <img src="{% static 'images/call.png'%}" alt="" >
+                    <p>+54 456 4564</p>
+                    <img src="{% static 'images/email.png'%}" alt="">
+                    <p>office@template.com</p>
+                    <img src="{% static 'images/pin.png'%}" alt="" >
+                    <p>Adis, Abab, Ehiopia <br>3256</p>
+                </div>
+        </div>
+        <form action="" class="form1">
+            <h5>Contact us</h5>
+            <input type="text" placeholder="Name" name="name">
+            <input type="email" placeholder="Email" name="email">
+            <textarea name="message" id="message" placeholder="Your message"></textarea>
+            <input class="btn" type="submit" value="Submit">
+        </form>
+    </div>
+
+
+{% endblock content %}

@@ -1,0 +1,57 @@
+{% extends 'nav.html' %}
+{%block robot%}{{seo.index}}{%endblock%}, {%block index%}{{seo.follow}}{%endblock%}
+{%block googlebot%}{{seo.index}}{%endblock%}, {%block gfollow%}{{seo.follow}}{%endblock%}
+{%block bingbot%}{{seo.index}}{%endblock%}, {%block bfollow%}{{seo.follow}}{%endblock%}
+{% block metatitle %}{{seo.page_title}}{% endblock %}
+{% block metadescription %}{{seo.meta}}{% endblock %}
+{% block url %}{{request.build_absolute_uri}}{% endblock %}
+{% block canonical %}{{request.build_absolute_uri}}{% endblock %}
+{% block title %}{{seo.page_title}}{% endblock %}
+{% load static %}
+{% block content %}
+<div class="banner">
+    
+        <img class="bg-img" src="{% static 'images/mountains.webp'%}" alt="">
+        <div class="bannerhead">
+            <h1>Travel Guide</h1>
+        </div>
+</div>
+<section class="container center">
+    <div>
+        <h2 >
+            Essential guidelines to ensure you're fully prepared for your Ethiopian adventure!
+        </h2>
+    </div>
+    
+    {% for i in guideline %}
+        
+    
+        
+    <div class="guidelines">
+        <div class="guideline" data-aos="fade-left" data-aos-duration="800">
+            <div class="d-fl"><img src="{{i.icon.url}}" alt="" width="100px">
+            </div>
+            <div>
+                <h5>{{i.name}}</h5>
+                <p>{{i.content|truncatewords:30|safe }} <a href="{% url 'guideline' i.slug%}">Read More</a></p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+<section class="container enquiry">
+    <div>
+    <h3>If you have any query free to contact</h3>
+        <p>We offer complete tour package and also provide consultation for your jorney of Ethiopia</p>
+</div>
+    <form class="form2" action="">
+        <h5 class="mb-2">Enquiry Form</h5>
+        <input type="text" id="name" name="name" placeholder="Name">
+        <input type="text" id="email" name="email" placeholder="Name">
+        <input type="text" id="mobile" name="mobile" placeholder="Name">
+        <textarea name="message" id="message" placeholder="Message"></textarea>
+        
+        <button>Submit</button>
+    </form>
+</section>
+{% endblock content %}
