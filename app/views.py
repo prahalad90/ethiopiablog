@@ -42,7 +42,10 @@ def post(request,catslug,slug):
     return render(request, 'post.html',context)
 
 def travelguide(request):
-    seo = page.objects.get(name__contains = 'Travel')
+    try:
+        seo = page.objects.get(name__contains = 'Travel')
+    except:
+        seo = None
     guideline = travelGuideline.objects.all()
     context = {
         'seo':seo,

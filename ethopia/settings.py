@@ -26,9 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-i&%#!imxjrmct@%tz6=1%-55*n+%uim(b#i=@^2!6kf#!)@p3!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -124,12 +124,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = '/var/www/ethopiablog/static/'
+STATIC_ROOT = os.path.join(BASE_DIR,'Assets/static')
 MEDIA_URL = 'media/'
-MEDIA_ROOT = '/var/www/ethopiablog/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'static')
+    os.path.join(BASE_DIR,'static'),
 ]
 
 # Default primary key field type

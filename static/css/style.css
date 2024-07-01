@@ -85,7 +85,7 @@ h1 {
 h2 {
     font-family: "Bebas Neue", sans-serif;
     font-size: 50px;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
 }
 
 h3 {
@@ -203,6 +203,9 @@ nav ul li a:hover:after{
 
 .toggle {
     display: none;
+    ul{
+        list-style: none;
+    }
     
 }
 #close, #menu{
